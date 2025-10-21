@@ -1,0 +1,413 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Logo-inspired color palette */
+    --background: 214 44% 98%; /* #F7F9FC */
+    --foreground: 0 0% 17%; /* #2B2B2B - Dark gray for headings */
+
+    --card: 0 0% 100%; /* #FFFFFF - White cards */
+    --card-foreground: 0 0% 17%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 17%;
+
+    --primary: 199 100% 38%; /* #007BC3 - Primary blue */
+    --primary-foreground: 0 0% 100%; /* White text on blue buttons */
+
+    --secondary: 197 100% 47%; /* #00AEEF - Secondary blue */
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 214 32% 91%;
+    --muted-foreground: 0 0% 45%; /* Neutral gray for body text */
+
+    --accent: 0 0% 17%; /* #2B2B2B - Dark gray accent */
+    --accent-foreground: 0 0% 100%;
+
+    /* Legacy civic colors updated to match logo */
+    --civic-blue: 199 100% 38%; /* Primary */
+    --civic-blue-dark: 199 100% 30%;
+    --civic-blue-light: 197 100% 47%; /* Secondary */
+    --civic-gray: 214 44% 98%;
+    --civic-gray-dark: 0 0% 17%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 199 100% 38%;
+
+    --radius: 0.5rem;
+
+    /* Sidebar colors matching logo palette */
+    --sidebar-background: 214 44% 98%; /* #F7F9FC */
+    --sidebar-foreground: 0 0% 17%;
+    --sidebar-primary: 199 100% 38%; /* Primary blue */
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 199 100% 38%; /* Blue accent for active items */
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 214 32% 91%;
+    --sidebar-ring: 197 100% 47%;
+
+    /* Gradient tokens inspired by logo */
+    --gradient-primary: linear-gradient(135deg, hsl(199, 100%, 38%), hsl(197, 100%, 47%));
+    --gradient-highlight: linear-gradient(90deg, hsl(199, 100%, 38%) 0%, hsl(197, 100%, 47%) 100%);
+  }
+
+  .dark {
+    --background: 0 0% 10%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 13%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 13%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 199 100% 38%; /* Keep primary blue in dark mode */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 197 100% 47%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 0 0% 17%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 197 100% 47%;
+    
+    --sidebar-background: 0 0% 13%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 199 100% 38%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 199 100% 38%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 0 0% 20%;
+    --sidebar-ring: 197 100% 47%;
+
+    --gradient-primary: linear-gradient(135deg, hsl(199, 100%, 38%), hsl(197, 100%, 47%));
+    --gradient-highlight: linear-gradient(90deg, hsl(199, 100%, 38%) 0%, hsl(197, 100%, 47%) 100%);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-weight: 400;
+    line-height: 1.75;
+    letter-spacing: 0.02em;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-foreground;
+    font-family: 'Poppins', 'Inter', system-ui, -apple-system, sans-serif;
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: 0.02em;
+  }
+
+  h1 {
+    @apply font-bold;
+    font-weight: 700;
+    font-size: 2.5rem;
+    line-height: 1.2;
+  }
+
+  h2 {
+    font-weight: 600;
+    font-size: 2rem;
+    line-height: 1.25;
+  }
+
+  h3 {
+    font-weight: 600;
+    font-size: 1.5rem;
+    line-height: 1.3;
+  }
+
+  h4 {
+    font-weight: 600;
+    font-size: 1.25rem;
+    line-height: 1.35;
+  }
+
+  p, span, div {
+    @apply text-muted-foreground;
+    font-weight: 400;
+    line-height: 1.75;
+  }
+
+  strong, b {
+    font-weight: 600;
+  }
+}
+
+@layer utilities {
+  .bg-gradient-primary {
+    background: var(--gradient-primary);
+  }
+
+  .bg-gradient-highlight {
+    background: var(--gradient-highlight);
+  }
+
+  .text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Accessibility utilities */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .focus-visible {
+    @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-background;
+  }
+
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    .btn-primary {
+      @apply border-2 border-foreground;
+    }
+    
+    .card-base {
+      @apply border-2 border-border;
+    }
+    
+    .btn-outline {
+      @apply border-2 border-primary;
+    }
+  }
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    .fade-in,
+    .fade-in-up,
+    .fade-in-down,
+    .slide-in-right,
+    .slide-in-left,
+    .scale-in,
+    .page-transition {
+      animation: none;
+    }
+    
+    .shimmer {
+      animation: none;
+    }
+    
+    .card-elevated {
+      @apply hover:scale-100;
+    }
+    
+    .btn-primary,
+    .btn-secondary,
+    .btn-outline {
+      @apply transition-none;
+    }
+  }
+
+  /* Consistent spacing utilities */
+  .section-spacing {
+    @apply py-8 px-4;
+  }
+
+  .card-spacing {
+    @apply p-6;
+  }
+
+  .button-spacing {
+    @apply px-4 py-2;
+  }
+
+  /* Consistent button styles */
+  .btn-primary {
+    @apply bg-primary hover:bg-primary/90 text-primary-foreground font-medium transition-all duration-200 hover:shadow-md;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary hover:bg-secondary/90 text-secondary-foreground font-medium transition-all duration-200 hover:shadow-md;
+  }
+
+  .btn-outline {
+    @apply border border-primary text-primary hover:bg-primary hover:text-primary-foreground font-medium transition-all duration-200 hover:shadow-md;
+  }
+
+  /* Consistent card styles */
+  .card-base {
+    @apply bg-card border border-border rounded-lg shadow-sm transition-all duration-200;
+  }
+
+  .card-elevated {
+    @apply bg-card border border-border rounded-lg shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1;
+  }
+
+  /* Consistent text styles */
+  .text-heading {
+    @apply font-heading font-semibold text-foreground;
+  }
+
+  .text-body {
+    @apply font-sans text-muted-foreground;
+  }
+
+  .text-caption {
+    @apply font-sans text-sm text-muted-foreground;
+  }
+
+  /* Animation utilities */
+  .fade-in {
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  .fade-in-up {
+    animation: fadeInUp 0.3s ease-out;
+  }
+
+  .fade-in-down {
+    animation: fadeInDown 0.3s ease-out;
+  }
+
+  .slide-in-right {
+    animation: slideInRight 0.3s ease-out;
+  }
+
+  .slide-in-left {
+    animation: slideInLeft 0.3s ease-out;
+  }
+
+  .scale-in {
+    animation: scaleIn 0.2s ease-out;
+  }
+
+  .shimmer {
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+
+  .page-transition {
+    animation: pageFadeIn 0.3s ease-out;
+  }
+
+  .stagger-1 { animation-delay: 0.1s; }
+  .stagger-2 { animation-delay: 0.2s; }
+  .stagger-3 { animation-delay: 0.3s; }
+  .stagger-4 { animation-delay: 0.4s; }
+  .stagger-5 { animation-delay: 0.5s; }
+  .stagger-6 { animation-delay: 0.6s; }
+}
+
+/* Keyframe animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
